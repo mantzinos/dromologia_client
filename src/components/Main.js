@@ -34,7 +34,7 @@ const Main = props => {
     const { name, value } = event.target;
     console.log("name", name, "value", value);
     const driver = await axios.get(
-      `${process.env.REACT_APP_LOCAL}/driver/get/${checkUser}`
+      `${process.env.REACT_APP_LOCAL}/driver/get/${value}`
     );
     console.log(driver.data);
     setMyDriver(prev => driver.data);
@@ -75,8 +75,8 @@ const Main = props => {
                 name="driver"
                 id=""
               >
-                <option value="makatak">makatak</option>
-                <option value="alekos">alekos</option>
+                <option value="ipiastona">ipiastona</option>
+                <option value="ipisastona">ipisastona</option>
                 <option value="2">tria</option>
                 <option value="3">tessera</option>
                 <option value="4">pente</option>
