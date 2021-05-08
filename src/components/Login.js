@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 const axios = require("axios");
 
 const Login = () => {
@@ -43,12 +44,12 @@ const Login = () => {
       <form onSubmit={handleSubmit} className="myform">
         <div className="formitem">
           <div className="item">
-            <label htmlFor="username">Συνθηματικό χρήστη</label>
+            <label htmlFor="username">Όνομα χρήστη</label>
           </div>
           <div className="item">
             <input
               onChange={handleChange}
-              className="input"
+              className="inputtext"
               name="username"
               type="text"
             />
@@ -61,7 +62,7 @@ const Login = () => {
           <div className="item">
             <input
               onChange={handleChange}
-              className="input"
+              className="inputtext"
               name="password"
               type="password"
             />
@@ -72,6 +73,10 @@ const Login = () => {
             <button type="submit" className="loginbtn">
               Σύνδεση
             </button>
+            <span className="myspan"> </span>
+            <Link to="/" className="loginbtn">
+              Άκυρο
+            </Link>
           </div>
         </div>
       </form>

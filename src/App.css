@@ -2,6 +2,8 @@ body {
   margin: 0;
   font-family: "Roboto", sans-serif;
   font-size: 1.2em;
+  background-color: #00b4d8;
+  background-image: url("https://www.transparenttextures.com/patterns/paper.png");
 }
 
 .landing {
@@ -113,6 +115,7 @@ body {
   border: 2px solid #caf0f8;
   box-shadow: 0px 8px 15px rgba(0, 119, 182, 0.3);
   transition: all 0.3s ease 0s;
+  cursor: pointer;
 }
 .loginbtn:hover {
   background-color: #caf0f8;
@@ -121,7 +124,7 @@ body {
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
 }
-input {
+.inputtext {
   padding: 10px 0;
   background-color: #00b4d8;
   border-radius: 5%;
@@ -134,12 +137,12 @@ input {
   text-align: center;
 }
 
-input:focus {
+.inputtext:focus {
   outline: none;
 }
 .myform2 {
   width: 400px;
-  height: 600px;
+  height: 500px;
   background-color: #caf0f8;
   border-radius: 5%;
   box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3);
@@ -151,13 +154,13 @@ input:focus {
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
 }
 .mainsection {
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw; */
+  /* height: 100vh; */
   background-color: #00b4d8;
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
   display: flex;
   flex-direction: column;
-
+  flex-wrap: wrap;
   justify-content: flex-start;
 }
 .mynavbar {
@@ -212,14 +215,15 @@ input:focus {
 .addsection {
   width: 100%;
   height: 440px;
-  background-color: bisque;
+  /* background-color: bisque; */
   display: flex;
   align-items: center;
+  text-shadow: 0px 8px 15px rgba(0, 119, 182, 0.3);
 }
 .mymainform {
-  width: 250px;
+  width: 350px;
   height: 400px;
-  margin: 0 0 0 20px;
+  margin: 0 20px 0 20px;
 
   background-color: #caf0f8;
   border-radius: 5%;
@@ -233,38 +237,56 @@ input:focus {
 }
 
 .selectbtn {
-  /* appearance: none; */
-  /* display: block; */
   outline: none;
-  width: 100%;
-  line-height: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: inherit;
-}
-
-.rooti {
-  --select-border: #777;
-  --select-focus: red;
-  --select-arrow: var(--select-border);
-}
-rooti:hover {
-  background-color: aqua;
+  /* width: 100%; */
+  /* line-height: normal; */
+  /* font-family: inherit;
+  font-size: 1em;
+  cursor: inherit; */
 }
 
 .adddriver {
-  width: 400px;
+  width: 600px;
   height: 400px;
   /* margin: 0 0 0 20px; */
   background-color: #caf0f8;
   border-radius: 5%;
   box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3);
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #00b4d8;
+  background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+}
+.adddriverleft {
+  /* background-color: green; */
+  width: 290px;
+  height: 320px;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #00b4d8;
-  background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+}
+.adddrivername {
+  /* text-shadow: 0px 8px 15px rgba(0, 119, 182, 0.3); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.adddriverphoto {
+  border-radius: 5%;
+  box-shadow: 0 2px 10px 5px rgba(0, 119, 182, 0.3);
+  border: 2px solid #caf0f8;
+}
+.adddriverright {
+  /* background-color: yellow; */
+  width: 180px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .addvehicle {
   width: 400px;
@@ -280,10 +302,54 @@ rooti:hover {
   color: #00b4d8;
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
 }
-.additinerary {
+
+.addvehicleall {
+  height: 340px;
+  width: 340px;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.addvehicletitle {
+  width: 340px;
+  height: 40px;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.addvehiclecontent {
+  width: 270px;
+  height: 300px;
+  /* background-color: green; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.addvehiclecontentleft {
+  width: 150px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+.addvehiclecontentright {
+  width: 180px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.adddestination {
   width: 400px;
   height: 400px;
-  margin: 0 0 0 20px;
+  margin: 0 20px 0 20px;
   background-color: #caf0f8;
   border-radius: 5%;
   box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3);
@@ -294,10 +360,298 @@ rooti:hover {
   color: #00b4d8;
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
 }
+.adddestinationall {
+  height: 340px;
+  width: 340px;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.adddestinationtitle {
+  margin-top: 10px;
+  width: 340px;
+  height: 100px;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.adddestinationcontent {
+  margin-top: 30px;
+  width: 270px;
+  height: 300px;
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.destinationname {
+  width: 270px;
+  height: 80px;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.destinationdescription {
+  width: 270px;
+  height: 220px;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.destintitle1 {
+  /* align-self: flex-start; */
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40%;
+  /* background-color: orange; */
+}
+.destincontent1 {
+  /* display: flex;
+  align-items: center; */
+  width: 100%;
+  height: 60%;
+  position: relative;
+  word-wrap: break-word;
+  /* background-color: blue; */
+}
+.destintitle2 {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  width: 100%;
+  height: 20%;
+  /* background-color: purple; */
+}
+.destincontent2 {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  height: 80%;
+  width: 100%;
+  position: relative;
+  word-wrap: break-word;
+}
 
 .myadds {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: auto;
+}
+.checkbtn {
+  padding: 10px 30px;
+  border-radius: 10%/50%;
+  font-size: 0.9em;
+  background-color: #caf0f8;
+  color: #00b4d8;
+  border: 2px solid #00b4d8;
+  transition: all 0.3s ease 0s;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+.checkbtn:hover {
+  background-color: #00b4d8;
+  color: #caf0f8;
+  border: 2px solid #caf0f8;
+  box-shadow: 0px 8px 15px rgba(0, 119, 182, 0.3);
+  background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+}
+.mycheckbtn {
+  margin: 20px 0 0 20px;
+  display: flex;
+  align-items: center;
+}
+.itineraries {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.itinerary {
+  width: 400px;
+  height: 500px;
+  margin: 20px 20px 20px 20px;
+  background-color: #caf0f8;
+  border-radius: 5%;
+  box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3);
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #00b4d8;
+  background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+}
+
+.cardtitle {
+  width: 50%;
+  height: 30px;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cardphoto {
+  width: 250px;
+  height: 250px;
+
+  /* background-color: aqua; */
+}
+.carddriver {
+  width: 50%;
+  height: 30px;
+  /* background-color: cornflowerblue; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cardcar {
+  width: 50%;
+  height: 30px;
+  /* background-color: blueviolet; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cardtimer {
+  width: 50%;
+  height: 30px;
+  /* background-color: orange; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cardbtns {
+  width: 380px;
+  height: 50px;
+  /* background-color: coral; */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.myform3 {
+  width: 400px;
+  height: 600px;
+  background-color: #caf0f8;
+  border-radius: 5%;
+  box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #00b4d8;
+  background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+}
+.usersettings {
+  width: 1024px;
+  height: 768px;
+  margin: 20px 20px 20px 20px;
+  background-color: #caf0f8;
+  border-radius: 5%;
+  box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  /* flex-wrap: wrap; */
+  color: #00b4d8;
+  background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+}
+.settingsinsideleft {
+  width: 512px;
+  height: 768px;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.settingsinsideright {
+  width: 512px;
+  height: 768px;
+  /* background-color: pink; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.settingsinside {
+  width: 512px;
+  height: 384px;
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.settingscontent {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  /* background-color: red; */
+  width: 512px;
+  height: 64px;
+}
+.itemphotomain {
+  display: flex;
+  height: 30%;
+  align-items: center;
+  justify-content: center;
+}
+.itemphoto {
+  /* padding: 10px 0;
+  border-radius: none;
+  box-shadow: none;
+  border: none;
+  border-radius: none;
+  text-align: center;
+  /* border-radius: 5%; */
+  /* box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3); */
+  box-decoration-break: none;
+  font-size: 1em;
+  background-color: #caf0f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #00b4d8;
+  background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+}
+::-webkit-file-upload-button {
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 10%/50%;
+  font-size: 0.9em;
+  background-color: #00b4d8;
+  color: #caf0f8;
+  border: 2px solid #caf0f8;
+  box-shadow: 0px 8px 15px rgba(0, 119, 182, 0.3);
+  transition: all 0.3s ease 0s;
+}
+::-webkit-file-upload-button:hover {
+  background-color: #caf0f8;
+  color: #00b4d8;
+  border: 2px solid #00b4d8;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+  cursor: pointer;
+}
+.formitemphoto {
+  height: 52%;
+}
+
+.myspan {
+  padding: 5px;
 }

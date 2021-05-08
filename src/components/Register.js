@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [myInput, setMyInput] = useState({});
@@ -43,10 +44,11 @@ const Register = () => {
       <form onSubmit={handleSubmit} className="myform2">
         <div className="formitem">
           <div className="item">
-            <label htmlFor="username">Κωδικός χρήστη</label>
+            <label htmlFor="username">Όνομα χρήστη</label>
           </div>
           <div className="item">
             <input
+              className="inputtext"
               required
               onChange={handleChange}
               name="username"
@@ -58,10 +60,11 @@ const Register = () => {
         </div>
         <div className="formitem">
           <div className="item">
-            <label htmlFor="password">Συνθηματικό χρήστη</label>
+            <label htmlFor="password">Κωδικός χρήστη</label>
           </div>
           <div className="item">
             <input
+              className="inputtext"
               required
               onChange={handleChange}
               name="password"
@@ -76,7 +79,13 @@ const Register = () => {
             <label htmlFor="email">Email</label>
           </div>
           <div className="item">
-            <input required onChange={handleChange} name="email" type="email" />
+            <input
+              className="inputtext"
+              required
+              onChange={handleChange}
+              name="email"
+              type="email"
+            />
           </div>
         </div>
         <div className="formitem">
@@ -84,6 +93,10 @@ const Register = () => {
             <button type="submit" className="loginbtn">
               Εγγραφή
             </button>
+            <span className="myspan"> </span>
+            <Link to="/" className="loginbtn">
+              Άκυρο
+            </Link>
           </div>
         </div>
       </form>

@@ -5,138 +5,303 @@ import Navbar from "./Navbar";
 
 const Main = props => {
   const [checkUser, setCheckUser] = useState("");
+  const [checkAdd, setCheckAdd] = useState(false);
   const [myDriver, setMyDriver] = useState({});
+  const [myVehicle, setMyVehicle] = useState({});
+  const [myDestination, setMyDestination] = useState({});
+  const [myItinerary, setMyItinerary] = useState({});
+  const [drivers, setDrivers] = useState([]);
+  const [vehicles, setVehicles] = useState([]);
+  const [destinations, setDestinations] = useState([]);
+  const [itineraries, setItineraries] = useState([]);
 
   useEffect(() => {
     const letsCheckUser = async () => {
-      //   const myUser = {
-      //     username: props.match.params.name,
-      //   };
-      //   try {
-      //     const res = await axios.post(`${process.env.REACT_APP_LOCAL}/login`, {
-      //       username: `${props.match.params.name}`,
-      //       password: `${props.location.state.password}`,
-      //     });
-      //     setCheckUser(prev => res.data);
-      //     console.log(checkUser);
-      //     if (checkUser !== "ok") return <Redirect to="/login" />;
-      //   } catch (err) {
-      //     console.log(err);
-      //   }
-      const myUser = props.match.params.name;
-      //   console.log(myUser);
-      setCheckUser(prev => myUser);
+      const user = props.match.params.name;
+      setCheckUser(prev => user);
+      const myDrivers = await axios.get(
+        `${process.env.REACT_APP_LOCAL}/driver/getall/${user}`
+      );
+      setDrivers(prev => myDrivers.data);
+
+      const myVehicles = await axios.get(
+        `${process.env.REACT_APP_LOCAL}/vehicle/getall/${user}`
+      );
+      setVehicles(prev => myVehicles.data);
+      const myDestinations = await axios.get(
+        `${process.env.REACT_APP_LOCAL}/destination/getall/${user}`
+      );
+      setDestinations(prev => myDestinations.data);
+      const myItineraries = await axios.get(
+        `${process.env.REACT_APP_LOCAL}/itinerary/getall/${user}`
+      );
+      const date = new Date().getDate().toLocaleString();
+      const year = new Date().getFullYear().toLocaleString();
+      const month = new Date().getMonth().toLocaleString();
+      console.log(month);
+      console.log(year);
+      console.log(date);
+      // console.log(myItineraries.data);
+      // console.log(myItineraries.data[0].date);
+      const dates = "2021-05-07T02:54:58.710Z";
+      const simera = await axios.post(
+        `${process.env.REACT_APP_LOCAL}/itinerary/date/${user}`,
+        { dates }
+      );
+      console.log(simera.data);
     };
+
     letsCheckUser();
   }, []);
 
-  const handleChange = async event => {
-    const { name, value } = event.target;
-    console.log("name", name, "value", value);
-    const driver = await axios.get(
-      `${process.env.REACT_APP_LOCAL}/driver/get/${value}`
-    );
-    console.log(driver.data);
-    setMyDriver(prev => driver.data);
-    console.log(myDriver);
+  const handleChangeDriver = event => {
+    drivers.forEach(a => {
+      if (a._id === event.target.value) {
+        setMyDriver(prev => a);
+        setMyItinerary(prev => {
+          return {
+            ...prev,
+            driver: a.lastname,
+            driverphoto: a.photo,
+          };
+        });
+      }
+    });
+  };
+  const handleChangeVehicle = event => {
+    vehicles.forEach(a => {
+      if (a._id === event.target.value) {
+        setMyVehicle(prev => a);
+        setMyItinerary(prev => {
+          return {
+            ...prev,
+            vehicle: a.sign,
+          };
+        });
+      }
+    });
+  };
+  const handleChangeDestination = event => {
+    destinations.forEach(a => {
+      if (a._id === event.target.value) {
+        setMyDestination(prev => a);
+        setMyItinerary(prev => {
+          return {
+            ...prev,
+            destination: a.name,
+          };
+        });
+      }
+    });
+  };
+  const handleChangeItinerary = async event => {
+    event.preventDefault();
+    try {
+      console.log(myItinerary);
+      const res = await axios.post(
+        `${process.env.REACT_APP_LOCAL}/itinerary/add/${checkUser}`,
+        myItinerary
+      );
+      console.log(res.data);
+      setItineraries(prev => [...prev, res.data]);
+
+      setCheckAdd(prev => false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const checkAddBtn = event => {
+    setCheckAdd(prev => true);
+    console.log(vehicles);
   };
 
   return (
-    // <section className="mainsection">
-    //   <Navbar />
-    //   <div className="mymainform">
-    //     <form action="">
-    //       <select className="selectbtn loginbtn" name="driver" id="">
-    //         <option className="" value="0">
-    //           ena
-    //         </option>
-    //         <option className="rooti" value="1">
-    //           dyo
-    //         </option>
-    //         <option value="2">tria</option>
-    //         <option value="3">tessera</option>
-    //         <option value="4">pente</option>
-    //       </select>
-    //     </form>
-    //   </div>
-    // </section>
     <section className="mainsection">
-      <Navbar />
-      <div className="addsection">
-        <form className="mymainform">
-          <div className="formitem">
-            <div className="item">
-              <label htmlFor="username">Επιλογή οδηγού</label>
-            </div>
-            <div className="item">
-              <select
-                onChange={handleChange}
-                className="selectbtn loginbtn"
-                name="driver"
-                id=""
-              >
-                <option value="ipiastona">ipiastona</option>
-                <option value="ipisastona">ipisastona</option>
-                <option value="2">tria</option>
-                <option value="3">tessera</option>
-                <option value="4">pente</option>
-              </select>
-            </div>
-          </div>
-          <div className="formitem">
-            <div className="item">
-              <label htmlFor="password">Επιλογή οχήματος</label>
-            </div>
-            <div className="item">
-              <select className="selectbtn loginbtn" name="driver" id="">
-                <option className="" value="0">
-                  ena
-                </option>
-                <option className="rooti" value="1">
-                  dyo
-                </option>
-                <option value="2">tria</option>
-                <option value="3">tessera</option>
-                <option value="4">pente</option>
-              </select>
-            </div>
-          </div>
-          <div className="formitem">
-            <div className="item">
-              <label htmlFor="email">Επιλογή δρομολογίου</label>
-            </div>
-            <div className="item">
-              <select className="selectbtn loginbtn" name="driver" id="">
-                <option className="" value="0">
-                  ena
-                </option>
-                <option className="rooti" value="1">
-                  dyo
-                </option>
-                <option value="2">tria</option>
-                <option value="3">tessera</option>
-                <option value="4">pente</option>
-              </select>{" "}
-            </div>
-          </div>
-          <div className="formitem">
-            <div className="item">
-              <button type="submit" className="loginbtn">
-                Εισαγωγή
-              </button>
-            </div>
-          </div>
-        </form>
-        <div className="myadds">
-          <div className="adddriver">
-            <h2>{myDriver.firstname}</h2>
-            <h2>{myDriver.lastname}</h2>
-            <img src={myDriver.photo} width="200" height="200"></img>
-          </div>
-          <div className="addvehicle"></div>
-          <div className="additinerary"></div>
+      <Navbar key={checkUser} user={checkUser} />
+      {!checkAdd ? (
+        <div className="mycheckbtn">
+          <button className="checkbtn" onClick={checkAddBtn}>
+            Επιλογές
+          </button>
         </div>
-      </div>
+      ) : (
+        <div className="addsection">
+          <form onSubmit={handleChangeItinerary} className="mymainform">
+            <div className="formitem">
+              <div className="item">
+                <label htmlFor="username">Επιλογή οδηγού</label>
+              </div>
+              <div className="item">
+                <select
+                  required
+                  onChange={handleChangeDriver}
+                  className="selectbtn loginbtn"
+                  name="driverd"
+                  id=""
+                >
+                  <option value="0">Οδηγός</option>
+                  {drivers.map(a => (
+                    <option value={a._id} id={a._id}>
+                      {a.lastname}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="formitem">
+              <div className="item">
+                <label htmlFor="vehicle">Επιλογή οχήματος</label>
+              </div>
+              <div className="item">
+                <select
+                  required
+                  onChange={handleChangeVehicle}
+                  className="selectbtn loginbtn"
+                  name="vehicle"
+                  id=""
+                >
+                  <option value="0">Όχημα </option>
+                  {vehicles.map(a => (
+                    <option value={a._id} id={a._id}>
+                      {a.sign}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="formitem">
+              <div className="item">
+                <label htmlFor="email">Επιλογή διαδρομής</label>
+              </div>
+              <div className="item">
+                <select
+                  required
+                  onChange={handleChangeDestination}
+                  className="selectbtn loginbtn"
+                  name="destination"
+                  id=""
+                >
+                  <option value="0">Διαδρομή </option>
+                  {destinations.map(a => (
+                    <option value={a._id} id={a._id}>
+                      {a.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="formitem">
+              <div className="item">
+                <button type="submit" className="loginbtn">
+                  Εισαγωγή
+                </button>
+                <span className="myspan"></span>
+                <button
+                  onClick={() => setCheckAdd(prev => true)}
+                  type="submit"
+                  className="loginbtn"
+                >
+                  Άκυρο
+                </button>
+              </div>
+            </div>
+          </form>
+          <div className="myadds">
+            <div className="adddriver">
+              <div className="adddriverleft">
+                <img
+                  className="adddriverphoto"
+                  src={myDriver.photo}
+                  width="270"
+                  height="270"
+                  alt=""
+                ></img>
+              </div>
+
+              <div className="adddriverright">
+                <div>Επώνυμο:</div>
+                <div>{myDriver.lastname}</div>
+                <div>Όνομα:</div>
+                <div>{myDriver.firstname}</div>
+                <div>Τηλέφωνο:</div>
+                <div>{myDriver.phone}</div>
+              </div>
+            </div>
+
+            <div className="addvehicle">
+              <div className="addvehicleall">
+                <div className="addvehicletitle">
+                  <div>Όχημα</div>
+                </div>
+                <div className="addvehiclecontent">
+                  <div className="addvehiclecontentleft">
+                    <div>Τύπος:</div>
+                    <div>Μάρκα:</div>
+                    <div>Χρώμα:</div>
+                    <div>Πινακίδα:</div>
+                    <div>Καύσιμο:</div>
+                    <div>Ψυγείο:</div>
+                  </div>
+                  <div className="addvehiclecontentright">
+                    <div>{myVehicle.type}</div>
+                    <div>{myVehicle.brand}</div>
+                    <div>{myVehicle.color}</div>
+                    <div>{myVehicle.sign}</div>
+                    <div>{myVehicle.fuel}</div>
+                    <div>{myVehicle.fridge}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="adddestination">
+              <div className="adddestinationall">
+                <div className="adddestinationtitle">Διαδρομή</div>
+                <div className="adddestinationcontent">
+                  <div className="destinationname">
+                    <div className="destintitle1">Ονομασία:</div>
+                    <div className="destincontent1">{myDestination.name}</div>
+                  </div>
+                  <div className="destinationdescription">
+                    <div className="destintitle2">Περιγραφή:</div>
+                    <div className="destincontent2">
+                      {myDestination.description}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {itineraries !== [] && (
+        <div className="itineraries">
+          {itineraries.map(a => (
+            <div className="itinerary">
+              <div className="cardtitle">{a.destination}</div>
+              <div className="cardphoto">
+                <img
+                  className="adddriverphoto"
+                  src={a.driverphoto}
+                  width="250"
+                  height="250"
+                  alt=""
+                />
+              </div>
+              <div className="carddriver">{a.driver}</div>
+              <div className="cardcar">{a.vehicle}</div>
+              <div className="cardtimer">00:00</div>
+              <div className="cardbtns">
+                <button onClick="" className="loginbtn">
+                  Εκκίνηση
+                </button>
+                <button onClick="" className="loginbtn">
+                  Επιστροφή
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };
