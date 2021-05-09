@@ -539,7 +539,7 @@ body {
   /* background-color: coral; */
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 .myform3 {
   width: 400px;

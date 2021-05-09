@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+// import useInterval from "./useInterval";
 import { Redirect } from "react-router";
 import Navbar from "./Navbar";
 
@@ -14,6 +15,26 @@ const Main = props => {
   const [vehicles, setVehicles] = useState([]);
   const [destinations, setDestinations] = useState([]);
   const [itineraries, setItineraries] = useState([]);
+  const now = new Date();
+  const [timer, setTimer] = useState(now);
+  const [delay, setDelay] = useState(1000);
+
+  const useInterval = (callback, delay) => {
+    const savedCallback = useRef();
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+      const tick = () => {
+        savedCallback.current();
+      };
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  };
 
   useEffect(() => {
     const letsCheckUser = async () => {
@@ -32,27 +53,44 @@ const Main = props => {
         `${process.env.REACT_APP_LOCAL}/destination/getall/${user}`
       );
       setDestinations(prev => myDestinations.data);
-      const myItineraries = await axios.get(
-        `${process.env.REACT_APP_LOCAL}/itinerary/getall/${user}`
-      );
-      const date = new Date().getDate().toLocaleString();
-      const year = new Date().getFullYear().toLocaleString();
-      const month = new Date().getMonth().toLocaleString();
-      console.log(month);
-      console.log(year);
-      console.log(date);
+      // const myItineraries = await axios.get(
+      //   `${process.env.REACT_APP_LOCAL}/itinerary/getall/${user}`
+      // );
+      // const date = new Date().getDate().toLocaleString();
+      // const year = new Date().getFullYear().toLocaleString();
+      // const month = new Date().getMonth().toLocaleString();
+      // console.log(month);
+      // console.log(year);
+      // console.log(date);
       // console.log(myItineraries.data);
       // console.log(myItineraries.data[0].date);
-      const dates = "2021-05-07T02:54:58.710Z";
+      const dates = new Date().toLocaleDateString();
+      console.log(dates);
       const simera = await axios.post(
         `${process.env.REACT_APP_LOCAL}/itinerary/date/${user}`,
         { dates }
       );
-      console.log(simera.data);
-    };
+      // console.log(simera.data);
+      const todayData = simera.data;
+      const activeDate = todayData.filter(a => !a.stop);
+      const a = activeDate[0].start;
+      const b = a.toString();
+      const c = new Date(b);
+      console.log(c.getTime());
 
+      setItineraries(prev => activeDate);
+
+      // const simera = await axios.get(
+      //   `${process.env.REACT_APP_LOCAL}/itinerary/${user}`
+      // );
+      // console.log(simera.data);
+    };
     letsCheckUser();
   }, []);
+
+  const startTimer = () => {
+    setTimer(prev => new Date());
+  };
 
   const handleChangeDriver = event => {
     drivers.forEach(a => {
@@ -102,7 +140,7 @@ const Main = props => {
         `${process.env.REACT_APP_LOCAL}/itinerary/add/${checkUser}`,
         myItinerary
       );
-      console.log(res.data);
+      console.log(res.data, "***000***");
       setItineraries(prev => [...prev, res.data]);
 
       setCheckAdd(prev => false);
@@ -112,8 +150,21 @@ const Main = props => {
   };
   const checkAddBtn = event => {
     setCheckAdd(prev => true);
+
     console.log(vehicles);
   };
+  const checkReturn = event => {
+    event.preventDefault();
+    setCheckAdd(prev => false);
+  };
+  const starTimer = () => {};
+
+  const stopTimer = () => {
+    // clearInterval(interval);
+    setDelay(prev => null);
+  };
+
+  useInterval(startTimer, delay);
 
   return (
     <section className="mainsection">
@@ -126,7 +177,7 @@ const Main = props => {
         </div>
       ) : (
         <div className="addsection">
-          <form onSubmit={handleChangeItinerary} className="mymainform">
+          <form onSubmit="" className="mymainform">
             <div className="formitem">
               <div className="item">
                 <label htmlFor="username">Επιλογή οδηγού</label>
@@ -192,12 +243,16 @@ const Main = props => {
             </div>
             <div className="formitem">
               <div className="item">
-                <button type="submit" className="loginbtn">
+                <button
+                  type="submit"
+                  onClick={handleChangeItinerary}
+                  className="loginbtn"
+                >
                   Εισαγωγή
                 </button>
                 <span className="myspan"></span>
                 <button
-                  onClick={() => setCheckAdd(prev => true)}
+                  onClick={checkReturn}
                   type="submit"
                   className="loginbtn"
                 >
@@ -289,12 +344,31 @@ const Main = props => {
               </div>
               <div className="carddriver">{a.driver}</div>
               <div className="cardcar">{a.vehicle}</div>
-              <div className="cardtimer">00:00</div>
+              <div className="cardtimer">
+                {Math.floor(
+                  ((timer.getTime() - new Date(a.start).getTime()) %
+                    (1000 * 60 * 60 * 24)) /
+                    (1000 * 60 * 60)
+                )}
+                :
+                {Math.floor(
+                  ((timer.getTime() - new Date(a.start).getTime()) %
+                    (1000 * 60 * 60)) /
+                    (1000 * 60)
+                )}
+                :
+                {Math.floor(
+                  ((timer.getTime() - new Date(a.start).getTime()) %
+                    (1000 * 60)) /
+                    1000
+                )}
+              </div>
               <div className="cardbtns">
                 <button onClick="" className="loginbtn">
                   Εκκίνηση
                 </button>
-                <button onClick="" className="loginbtn">
+                <span className="myspan"></span>
+                <button onClick={stopTimer} className="loginbtn">
                   Επιστροφή
                 </button>
               </div>
