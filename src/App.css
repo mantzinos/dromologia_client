@@ -154,8 +154,6 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
 }
 .mainsection {
-  /* width: 100vw; */
-  /* height: 100vh; */
   background-color: #00b4d8;
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
   display: flex;
@@ -173,12 +171,14 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
 }
 .navbuttons {
   display: flex;
   width: 450px;
   flex-direction: row;
   justify-content: space-evenly;
+  flex-shrink: 0;
 }
 .navtitle {
   width: 150px;
@@ -188,10 +188,12 @@ body {
   font-size: 1em;
   display: flex;
   justify-content: center;
+  flex-shrink: 0;
 }
 .navbtnmain {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .loginbtn {
@@ -221,10 +223,10 @@ body {
   text-shadow: 0px 8px 15px rgba(0, 119, 182, 0.3);
 }
 .mymainform {
-  width: 350px;
+  width: 400px;
   height: 400px;
   margin: 0 20px 0 20px;
-
+  flex-shrink: 0;
   background-color: #caf0f8;
   border-radius: 5%;
   box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3);
@@ -238,17 +240,11 @@ body {
 
 .selectbtn {
   outline: none;
-  /* width: 100%; */
-  /* line-height: normal; */
-  /* font-family: inherit;
-  font-size: 1em;
-  cursor: inherit; */
 }
 
 .adddriver {
   width: 600px;
   height: 400px;
-  /* margin: 0 0 0 20px; */
   background-color: #caf0f8;
   border-radius: 5%;
   box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3);
@@ -260,7 +256,6 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
 }
 .adddriverleft {
-  /* background-color: green; */
   width: 290px;
   height: 320px;
   display: flex;
@@ -269,7 +264,6 @@ body {
   justify-content: center;
 }
 .adddrivername {
-  /* text-shadow: 0px 8px 15px rgba(0, 119, 182, 0.3); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -280,7 +274,6 @@ body {
   border: 2px solid #caf0f8;
 }
 .adddriverright {
-  /* background-color: yellow; */
   width: 180px;
   height: 320px;
   display: flex;
@@ -306,7 +299,6 @@ body {
 .addvehicleall {
   height: 340px;
   width: 340px;
-  /* background-color: blue; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -315,7 +307,6 @@ body {
 .addvehicletitle {
   width: 340px;
   height: 40px;
-  /* background-color: red; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -323,7 +314,6 @@ body {
 .addvehiclecontent {
   width: 270px;
   height: 300px;
-  /* background-color: green; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -363,7 +353,6 @@ body {
 .adddestinationall {
   height: 340px;
   width: 340px;
-  /* background-color: blue; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -372,8 +361,7 @@ body {
 .adddestinationtitle {
   margin-top: 10px;
   width: 340px;
-  height: 100px;
-  /* background-color: red; */
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -382,16 +370,13 @@ body {
   margin-top: 30px;
   width: 270px;
   height: 300px;
-  /* background-color: green; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-between; */
 }
 .destinationname {
   width: 270px;
-  height: 80px;
-  /* background-color: red; */
+  height: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -400,29 +385,26 @@ body {
 
 .destinationdescription {
   width: 270px;
-  height: 220px;
-  /* background-color: red; */
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-content: center;
   align-items: center;
 }
 .destintitle1 {
-  /* align-self: flex-start; */
   display: flex;
   align-items: center;
   width: 100%;
-  height: 40%;
-  /* background-color: orange; */
+  height: 70%;
+  margin: 5px 0 5px 0;
 }
 .destincontent1 {
-  /* display: flex;
-  align-items: center; */
   width: 100%;
-  height: 60%;
+  height: 20%;
   position: relative;
   word-wrap: break-word;
-  /* background-color: blue; */
+  margin: 5px 0 5px 0;
 }
 .destintitle2 {
   display: flex;
@@ -430,14 +412,12 @@ body {
   align-self: flex-start;
   width: 100%;
   height: 20%;
-  /* background-color: purple; */
+  margin: 15px 0 1px 0;
 }
 .destincontent2 {
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-  height: 80%;
   width: 100%;
+  height: 60%;
+  margin: 5px 0 5px 0;
   position: relative;
   word-wrap: break-word;
 }
@@ -465,6 +445,7 @@ body {
   border: 2px solid #caf0f8;
   box-shadow: 0px 8px 15px rgba(0, 119, 182, 0.3);
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+  cursor: pointer;
 }
 .mycheckbtn {
   margin: 20px 0 0 20px;
@@ -487,7 +468,6 @@ body {
   border-radius: 5%;
   box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3);
   display: flex;
-  /* flex-wrap: wrap; */
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
@@ -498,7 +478,6 @@ body {
 .cardtitle {
   width: 50%;
   height: 30px;
-  /* background-color: red; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -506,13 +485,10 @@ body {
 .cardphoto {
   width: 250px;
   height: 250px;
-
-  /* background-color: aqua; */
 }
 .carddriver {
   width: 50%;
   height: 30px;
-  /* background-color: cornflowerblue; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -520,7 +496,6 @@ body {
 .cardcar {
   width: 50%;
   height: 30px;
-  /* background-color: blueviolet; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -528,7 +503,6 @@ body {
 .cardtimer {
   width: 50%;
   height: 30px;
-  /* background-color: orange; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -536,7 +510,6 @@ body {
 .cardbtns {
   width: 380px;
   height: 50px;
-  /* background-color: coral; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -544,6 +517,19 @@ body {
 .myform3 {
   width: 400px;
   height: 600px;
+  background-color: #caf0f8;
+  border-radius: 5%;
+  box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #00b4d8;
+  background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+}
+.myform4 {
+  width: 400px;
+  height: 700px;
   background-color: #caf0f8;
   border-radius: 5%;
   box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3);
@@ -565,7 +551,6 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  /* flex-wrap: wrap; */
   color: #00b4d8;
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
 }
@@ -611,14 +596,6 @@ body {
   justify-content: center;
 }
 .itemphoto {
-  /* padding: 10px 0;
-  border-radius: none;
-  box-shadow: none;
-  border: none;
-  border-radius: none;
-  text-align: center;
-  /* border-radius: 5%; */
-  /* box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3); */
   box-decoration-break: none;
   font-size: 1em;
   background-color: #caf0f8;
@@ -654,4 +631,32 @@ body {
 
 .myspan {
   padding: 5px;
+}
+.fixnav {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 600px) {
+  .mainsection {
+    display: flex;
+    flex-direction: column;
+  }
+  .mymainform {
+    flex-direction: column;
+  }
+  .myadds {
+    flex-direction: column;
+  }
+}
+.inputtextarea {
+  font-size: 1em;
+}
+.formitem3 {
+  height: 40%;
+  text-align: center;
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }

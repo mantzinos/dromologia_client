@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router";
 
-const Fail = () => {
+const Failpass = () => {
   const [mySubmit, setMySubmit] = useState(false);
 
   const goBack = event => {
     event.preventDefault();
     setMySubmit(prev => true);
   };
-  if (mySubmit) return <Redirect to="/register" />;
+  if (mySubmit) return <Redirect to="/login" />;
   return (
     <section className="login fail">
       <form onSubmit={goBack} className="myform">
         <div className="formitem">
           <div className="item">
-            Το όνομα που δοκιμάζεται να χρησιμοποιήσετε υπάρχει ήδη, παρακαλώ
-            επιλέξτε κάποιο άλλο.
+            Λάθος Κωδικός χρήστη παρακαλώ προσπαθήστε ξανά.
           </div>
         </div>
 
@@ -31,4 +30,4 @@ const Fail = () => {
   );
 };
 
-export default Fail;
+export default Failpass;

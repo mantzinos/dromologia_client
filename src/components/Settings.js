@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Addvehicle from "./Addvehicle";
 import Navbar2 from "./Navbar2";
+import Updatedriver from "./Updatedriver";
 
 const Settings = props => {
   const [user, setUser] = useState("");
@@ -11,6 +13,12 @@ const Settings = props => {
   }, []);
 
   const addDriver = `/adddriver/${user}`;
+  const updateDriver = `/updatedriver/${user}`;
+  const deleteDriver = `/deletedriver/${user}`;
+  const addDestination = `/adddestination/${user}`;
+  const updateDestination = `/updatedestination/${user}`;
+  const deleteDestination = `/deletedestination/${user}`;
+  const addVehicle = `/addvehicle/${user}`;
 
   const handleSubmit = event => {};
 
@@ -30,7 +38,8 @@ const Settings = props => {
                 </Link>
               </div>
               <div className="settingscontent">
-                Αλλαγή email <button className="loginbtn">Προχώρησε</button>
+                <div className="leftone">Αλλαγή email</div>
+                <button className="loginbtn">Προχώρησε</button>
               </div>
               <div className="settingscontent">
                 Διαγραφή χρήστη <button className="loginbtn">Προχώρησε</button>
@@ -40,14 +49,21 @@ const Settings = props => {
               <div className="settingscontent">Επεξεργασία διαδρομής</div>
               <div className="settingscontent">
                 Εισαγωγή διαδρομής{" "}
-                <button className="loginbtn">Προχώρησε</button>
+                <Link to={addDestination} className="loginbtn">
+                  Προχώρησε
+                </Link>
               </div>
               <div className="settingscontent">
-                Αλλαγή στοιχείων <button className="loginbtn">Προχώρησε</button>
+                Αλλαγή στοιχείων{" "}
+                <Link to={updateDestination} className="loginbtn">
+                  Προχώρησε
+                </Link>
               </div>
               <div className="settingscontent">
                 Διαγραφή διαδρομής{" "}
-                <button className="loginbtn">Προχώρησε</button>
+                <Link to={deleteDestination} className="loginbtn">
+                  Προχώρησε
+                </Link>
               </div>
             </div>
           </div>
@@ -61,23 +77,33 @@ const Settings = props => {
                 </Link>
               </div>
               <div className="settingscontent">
-                Αλλαγή στοιχείων <button className="loginbtn">Προχώρησε</button>
+                Αλλαγή στοιχείων{" "}
+                <Link to={updateDriver} className="loginbtn">
+                  Προχώρησε
+                </Link>
               </div>
               <div className="settingscontent">
-                Διαγραφή οδηγού <button className="loginbtn">Προχώρησε</button>
+                Διαγραφή οδηγού{" "}
+                <Link to={deleteDriver} className="loginbtn">
+                  Προχώρησε
+                </Link>
               </div>
             </div>
             <div className="settingsinside">
               <div className="settingscontent">Επεξεργασία οχήματος</div>
               <div className="settingscontent">
-                Εισαγωγή οχήματος{" "}
+                <div className="leftone">Εισαγωγή οχήματος </div>
+                <Link to={addVehicle} className="loginbtn">
+                  Προχώρησε
+                </Link>
+              </div>
+              <div className="settingscontent">
+                <div className="leftone">Αλλαγή στοιχείων</div>
                 <button className="loginbtn">Προχώρησε</button>
               </div>
               <div className="settingscontent">
-                Αλλαγή στοιχείων <button className="loginbtn">Προχώρησε</button>
-              </div>
-              <div className="settingscontent">
-                Διαγραφή οδηγού <button className="loginbtn">Προχώρησε</button>
+                Διαγραφή οχήματος{" "}
+                <button className="loginbtn">Προχώρησε</button>
               </div>
             </div>
           </div>

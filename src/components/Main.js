@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-// import useInterval from "./useInterval";
 import { Redirect } from "react-router";
 import Navbar from "./Navbar";
 
@@ -17,7 +16,7 @@ const Main = props => {
   const [itineraries, setItineraries] = useState([]);
   const now = new Date();
   const [timer, setTimer] = useState(now);
-  const [delay, setDelay] = useState(1000);
+  const [delay, setDelay] = useState(null);
 
   const useInterval = (callback, delay) => {
     const savedCallback = useRef();
@@ -53,37 +52,21 @@ const Main = props => {
         `${process.env.REACT_APP_LOCAL}/destination/getall/${user}`
       );
       setDestinations(prev => myDestinations.data);
-      // const myItineraries = await axios.get(
-      //   `${process.env.REACT_APP_LOCAL}/itinerary/getall/${user}`
-      // );
-      // const date = new Date().getDate().toLocaleString();
-      // const year = new Date().getFullYear().toLocaleString();
-      // const month = new Date().getMonth().toLocaleString();
-      // console.log(month);
-      // console.log(year);
-      // console.log(date);
-      // console.log(myItineraries.data);
-      // console.log(myItineraries.data[0].date);
+
       const dates = new Date().toLocaleDateString();
       console.log(dates);
       const simera = await axios.post(
         `${process.env.REACT_APP_LOCAL}/itinerary/date/${user}`,
         { dates }
       );
-      // console.log(simera.data);
       const todayData = simera.data;
+      console.log(simera.data[0].start);
       const activeDate = todayData.filter(a => !a.stop);
-      const a = activeDate[0].start;
-      const b = a.toString();
-      const c = new Date(b);
-      console.log(c.getTime());
 
       setItineraries(prev => activeDate);
-
-      // const simera = await axios.get(
-      //   `${process.env.REACT_APP_LOCAL}/itinerary/${user}`
-      // );
-      // console.log(simera.data);
+      if (itineraries !== []) {
+        setDelay(prev => 1000);
+      }
     };
     letsCheckUser();
   }, []);
@@ -140,7 +123,6 @@ const Main = props => {
         `${process.env.REACT_APP_LOCAL}/itinerary/add/${checkUser}`,
         myItinerary
       );
-      console.log(res.data, "***000***");
       setItineraries(prev => [...prev, res.data]);
 
       setCheckAdd(prev => false);
@@ -157,11 +139,21 @@ const Main = props => {
     event.preventDefault();
     setCheckAdd(prev => false);
   };
-  const starTimer = () => {};
 
-  const stopTimer = () => {
-    // clearInterval(interval);
-    setDelay(prev => null);
+  const stopTimer = async event => {
+    console.log(event.target);
+    const timeNow = new Date().toISOString();
+    const { name, value } = event.target;
+    console.log(name);
+    console.log(timeNow);
+    const res = await axios.put(
+      `${process.env.REACT_APP_LOCAL}/itinerary/update/${checkUser}`,
+      {
+        _id: name,
+        stop: timeNow,
+      }
+    );
+    setItineraries(prev => prev.filter(a => a._id !== name));
   };
 
   useInterval(startTimer, delay);
@@ -322,6 +314,12 @@ const Main = props => {
                       {myDestination.description}
                     </div>
                   </div>
+                  <div className="destinationname">
+                    <div className="destintitle1">Απόσταση:</div>
+                    <div className="destincontent1">
+                      {myDestination.range} χμ.
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -397,11 +395,11 @@ const Main = props => {
                     )}
               </div>
               <div className="cardbtns">
-                <button onClick="" className="loginbtn">
+                {/* <button onClick="" className="loginbtn">
                   Εκκίνηση
                 </button>
-                <span className="myspan"></span>
-                <button onClick={stopTimer} className="loginbtn">
+                <span className="myspan"></span> */}
+                <button onClick={stopTimer} name={a._id} className="loginbtn">
                   Επιστροφή
                 </button>
               </div>

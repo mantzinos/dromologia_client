@@ -30,6 +30,11 @@ const Login = () => {
     }
     const myName = `/main/${myInput.username}`;
   };
+
+  if (mySubmit === "user not exist") return <Redirect to="/failnotexist" />;
+
+  if (mySubmit === "wrong password") return <Redirect to="/failpass" />;
+
   if (mySubmit === "ok")
     return (
       <Redirect
