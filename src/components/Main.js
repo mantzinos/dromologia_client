@@ -349,19 +349,52 @@ const Main = props => {
                   ((timer.getTime() - new Date(a.start).getTime()) %
                     (1000 * 60 * 60 * 24)) /
                     (1000 * 60 * 60)
-                )}
+                ) < 10
+                  ? "0" +
+                    Math.floor(
+                      ((timer.getTime() - new Date(a.start).getTime()) %
+                        (1000 * 60 * 60 * 24)) /
+                        (1000 * 60 * 60)
+                    )
+                  : Math.floor(
+                      ((timer.getTime() - new Date(a.start).getTime()) %
+                        (1000 * 60 * 60 * 24)) /
+                        (1000 * 60 * 60)
+                    )}
                 :
                 {Math.floor(
                   ((timer.getTime() - new Date(a.start).getTime()) %
                     (1000 * 60 * 60)) /
                     (1000 * 60)
-                )}
+                ) < 10
+                  ? "0" +
+                    Math.floor(
+                      ((timer.getTime() - new Date(a.start).getTime()) %
+                        (1000 * 60 * 60)) /
+                        (1000 * 60)
+                    )
+                  : Math.floor(
+                      ((timer.getTime() - new Date(a.start).getTime()) %
+                        (1000 * 60 * 60)) /
+                        (1000 * 60)
+                    )}
                 :
                 {Math.floor(
                   ((timer.getTime() - new Date(a.start).getTime()) %
                     (1000 * 60)) /
                     1000
-                )}
+                ) < 10
+                  ? "0" +
+                    Math.floor(
+                      ((timer.getTime() - new Date(a.start).getTime()) %
+                        (1000 * 60)) /
+                        1000
+                    )
+                  : Math.floor(
+                      ((timer.getTime() - new Date(a.start).getTime()) %
+                        (1000 * 60)) /
+                        1000
+                    )}
               </div>
               <div className="cardbtns">
                 <button onClick="" className="loginbtn">
