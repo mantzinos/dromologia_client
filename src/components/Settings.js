@@ -19,10 +19,11 @@ const Settings = props => {
   const updateDestination = `/updatedestination/${user}`;
   const deleteDestination = `/deletedestination/${user}`;
   const addVehicle = `/addvehicle/${user}`;
+  const updateVehicle = `/updatevehicle/${user}`;
+  const deleteVehicle = `/deletevehicle/${user}`;
+  const updateUserpass = `/updateuser/${user}`;
+  const deleteUser = `/deleteuser/${user}`;
 
-  const handleSubmit = event => {};
-
-  const handleChange = event => {};
   return (
     <section className="mainsection">
       <Navbar2 user={user} key={user} />
@@ -30,19 +31,24 @@ const Settings = props => {
         <div className="usersettings">
           <div className="settingsinsideleft">
             <div className="settingsinside">
-              <div className="settingscontent">Επεξεργασία χρήστη</div>
               <div className="settingscontent">
-                Αλλαγή κωδικού{" "}
-                <Link to="" className="loginbtn">
+                Επεξεργασία λογαριασμού χρήστη
+              </div>
+              <div className="settingscontent">
+                Αλλαγή στοιχείων
+                <Link to={updateUserpass} className="loginbtn">
                   Προχώρησε
                 </Link>
               </div>
-              <div className="settingscontent">
+              {/* <div className="settingscontent">
                 <div className="leftone">Αλλαγή email</div>
                 <button className="loginbtn">Προχώρησε</button>
-              </div>
+              </div> */}
               <div className="settingscontent">
-                Διαγραφή χρήστη <button className="loginbtn">Προχώρησε</button>
+                Διαγραφή χρήστη{" "}
+                <Link to={deleteUser} className="loginbtn">
+                  Προχώρησε
+                </Link>
               </div>
             </div>
             <div className="settingsinside">
@@ -99,11 +105,15 @@ const Settings = props => {
               </div>
               <div className="settingscontent">
                 <div className="leftone">Αλλαγή στοιχείων</div>
-                <button className="loginbtn">Προχώρησε</button>
+                <Link to={updateVehicle} className="loginbtn">
+                  Προχώρησε
+                </Link>
               </div>
               <div className="settingscontent">
                 Διαγραφή οχήματος{" "}
-                <button className="loginbtn">Προχώρησε</button>
+                <Link to={deleteVehicle} className="loginbtn">
+                  Προχώρησε
+                </Link>
               </div>
             </div>
           </div>

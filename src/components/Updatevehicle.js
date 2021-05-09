@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 
-const Addvehicle = props => {
+const Updatevehicle = props => {
   const user = props.match.params.name;
   const settings = `/settings/${user}`;
   const [vehicle, setVehicle] = useState({});
+  const [vehicles, setVehicles] = useState([]);
   const [checkAdd, setCheckAdd] = useState(false);
+
+  useEffect(() => {
+    const getVehicles = async () => {
+      try {
+        const res = await axios.get(
+          `${process.env.REACT_APP_LOCAL}/vehicle/getall/${user}`
+        );
+        console.log(res.data);
+        setVehicles(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getVehicles();
+  }, []);
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -17,16 +33,27 @@ const Addvehicle = props => {
       };
     });
   };
+  const handleChangeVehicle = event => {
+    const { name, value } = event.target;
+    console.log(value);
+    setVehicle(prev => {
+      return {
+        ...prev,
+        _id: value,
+      };
+    });
+  };
   const handleSubmit = async event => {
     event.preventDefault();
     try {
       const newVehicle = vehicle;
       console.log(newVehicle);
-      const res = await axios.post(
-        `${process.env.REACT_APP_LOCAL}/vehicle/add/${user}`,
+      const res = await axios.put(
+        `${process.env.REACT_APP_LOCAL}/vehicle/update/${user}`,
         newVehicle
       );
-      if (res.data) {
+
+      if (res.data === "Vehicle successfully updated") {
         setCheckAdd(prev => true);
       }
     } catch (err) {
@@ -39,19 +66,25 @@ const Addvehicle = props => {
   }
   return (
     <section className="login">
-      <form onSubmit={handleSubmit} className="myform4">
+      <form onSubmit={handleSubmit} className="myform3">
         <div className="formitem">
           <div className="item">
-            <label htmlFor="username">Μάρκα</label>
+            <label htmlFor="username">Επιλογή οχήματος</label>
           </div>
           <div className="item">
-            <input
-              onChange={handleChange}
-              className="inputtext"
-              name="brand"
-              type="text"
-              required
-            />
+            <select
+              onChange={handleChangeVehicle}
+              className="selectbtn loginbtn"
+              name="destinationd"
+              id=""
+            >
+              <option value="0">Όχημα</option>
+              {vehicles.map(a => (
+                <option value={a._id} id={a._id}>
+                  {a.sign}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <div className="formitem">
@@ -64,7 +97,6 @@ const Addvehicle = props => {
               className="inputtext"
               name="color"
               type="text"
-              required
             />
           </div>
         </div>
@@ -78,7 +110,6 @@ const Addvehicle = props => {
               className="inputtext"
               name="sign"
               type="text"
-              required
             />
           </div>
         </div>
@@ -91,7 +122,6 @@ const Addvehicle = props => {
               onChange={handleChange}
               className="selectbtn loginbtn"
               name="fuel"
-              required
             >
               <option value="0">Καύσιμο</option>
               {["Βενζίνη", "Πετρέλαιο", "Ηλεκτρικό", "Γκάζι"].map(a => (
@@ -102,28 +132,7 @@ const Addvehicle = props => {
             </select>
           </div>
         </div>
-        <div className="formitem">
-          <div className="item">
-            <label htmlFor="username">Τύπος οχήματος</label>
-          </div>
-          <div className="item">
-            <input
-              type="radio"
-              onChange={handleChange}
-              name="type"
-              value="Αυτοκίνητο"
-            />
-            <label for="Αυτοκίνητο">Αυτοκίνητο</label>
-            <span className="myspan" />
-            <input
-              type="radio"
-              onChange={handleChange}
-              name="type"
-              value="Δίκυκλο"
-            />
-            <label for="Δίκυκλο">Δίκυκλο</label>
-          </div>
-        </div>
+
         <div className="formitem">
           <div className="item">
             <label htmlFor="username">Ψυγείο</label>
@@ -162,4 +171,4 @@ const Addvehicle = props => {
   );
 };
 
-export default Addvehicle;
+export default Updatevehicle;

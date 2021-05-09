@@ -60,7 +60,6 @@ const Main = props => {
         { dates }
       );
       const todayData = simera.data;
-      console.log(simera.data[0].start);
       const activeDate = todayData.filter(a => !a.stop);
 
       setItineraries(prev => activeDate);

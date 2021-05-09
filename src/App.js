@@ -15,6 +15,10 @@ import Adddestination from "./components/Adddestination";
 import Updatedestination from "./components/Updatedestination";
 import Deletedestination from "./components/Deletedestination";
 import Addvehicle from "./components/Addvehicle";
+import Updatevehicle from "./components/Updatevehicle";
+import Deletevehicle from "./components/Deletevehicle";
+import Updateuser from "./components/Updateuser";
+import Deleteuser from "./components/Deleteuser";
 
 function App() {
   return (
@@ -48,6 +52,10 @@ function App() {
             component={Deletedestination}
           />
           <Route exact path="/addvehicle/:name" component={Addvehicle} />
+          <Route exact path="/updatevehicle/:name" component={Updatevehicle} />
+          <Route exact path="/deletevehicle/:name" component={Deletevehicle} />
+          <Route exact path="/updateuser/:name" component={Updateuser} />
+          <Route exact path="/deleteuser/:name" component={Deleteuser} />
         </Switch>
       </div>
     </Router>
