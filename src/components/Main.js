@@ -257,8 +257,8 @@ const Main = props => {
                 <img
                   className="adddriverphoto"
                   src={myDriver.photo}
-                  // width="270"
-                  // height="270"
+                  width="270"
+                  height="270"
                   alt=""
                 ></img>
               </div>
@@ -333,8 +333,8 @@ const Main = props => {
                 <img
                   className="adddriverphoto"
                   src={a.driverphoto}
-                  // width="250"
-                  // height="250"
+                  width="250"
+                  height="250"
                   alt=""
                 />
               </div>
