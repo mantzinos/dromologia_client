@@ -37,7 +37,7 @@ const History = props => {
   }, []);
 
   return (
-    <section className="mainsection">
+    <section className="mainsectionhistory">
       <div className="mynavbar">
         <div className="navtitle">Δρομολόγια</div>
         <div className="navbuttons">

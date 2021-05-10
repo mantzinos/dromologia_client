@@ -162,6 +162,16 @@ body {
   justify-content: flex-start;
   width: 100%;
 }
+.mainsectionhistory {
+  background-color: #00b4d8;
+  background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
 .mynavbar {
   width: 100%;
   height: 60px;
@@ -641,6 +651,7 @@ body {
 th {
   color: #caf0f8;
 }
+
 /* 
 @media only screen and (max-width: 1025px) {
   body {
@@ -912,7 +923,8 @@ th {
 }
 table {
   border-collapse: collapse;
-  border: 1px solid orange;
+  width: 100%;
+  font-size: 1em;
 }
 tr {
   width: auto;
@@ -924,4 +936,5 @@ td {
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
   text-align: center;
   border: 2px solid #00b4d8;
+  width: 10%;
 }
