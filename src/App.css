@@ -636,7 +636,134 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+@media only screen and (max-width: 1024px) {
+  .myform {
+    width: 200px;
+    height: 200px;
+  }
+  .myform2 {
+    width: 200px;
+    height: 250px;
+  }
+  .navbuttons {
+    width: 225px;
+  }
+  .navtitle {
+    width: 75px;
+    height: 25px;
+  }
+  .addsection {
+    height: 220px;
+  }
+  .mymainform {
+    width: 200px;
+    height: 200px;
+  }
+  .adddriver {
+    width: 300px;
+    height: 200px;
+  }
+  .adddriverleft {
+    width: 145px;
+    height: 160px;
+  }
+  .adddriverright {
+    width: 90px;
+    height: 160px;
+  }
+  .addvehicle {
+    width: 400px;
+    height: 400px;
+  }
+  .addvehicleall {
+    height: 170px;
+    width: 170px;
+  }
+  .addvehicletitle {
+    width: 170px;
+    height: 20px;
+  }
+  .addvehiclecontent {
+    width: 135px;
+    height: 150px;
+  }
+  .addvehiclecontentleft {
+    width: 75px;
+    height: 150px;
+  }
+  .addvehiclecontentright {
+    width: 90px;
+    height: 150px;
+  }
+  .adddestination {
+    width: 200px;
+    height: 200px;
+  }
+  .adddestinationall {
+    height: 170px;
+    width: 170px;
+  }
+  .adddestinationtitle {
+    width: 170px;
+    height: 15px;
+  }
+  .adddestinationcontent {
+    width: 135px;
+    height: 150px;
+  }
+  .destinationname {
+    width: 135px;
+    height: 20px;
+  }
+  .destinationdescription {
+    width: 135px;
+    height: 75px;
+  }
+  .itinerary {
+    width: 200px;
+    height: 250px;
+  }
+  .cardtitle {
+    height: 15px;
+  }
+  .cardphoto {
+    width: 125px;
+    height: 125px;
+  }
+  .cardbtns {
+    width: 190px;
+    height: 25px;
+  }
+  .myform3 {
+    width: 200px;
+    height: 300px;
+  }
+  .myform4 {
+    width: 200px;
+    height: 350px;
+  }
+  .usersettings {
+    width: 512px;
+    height: 384px;
+  }
+  .settingsinsideleft {
+    width: 256px;
+    height: 384px;
+  }
+  .settingsinsideright {
+    width: 256px;
+    height: 384px;
+  }
+  .settingsinside {
+    width: 256px;
+    height: 192px;
+  }
+  .settingscontent {
+    width: 256px;
+    height: 32px;
+  }
+}
+/* 
 @media only screen and (max-width: 600px) {
   .mainsection {
     display: flex;
@@ -655,7 +782,6 @@ body {
 .formitem3 {
   height: 40%;
   text-align: center;
-  /* display: flex; */
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -674,7 +800,4 @@ td {
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
   text-align: center;
   border: 2px solid #00b4d8;
-}
-.sextest {
-  color: red;
-}
+} */
