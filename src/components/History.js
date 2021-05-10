@@ -100,7 +100,7 @@ const History = props => {
             </tr>
           ))}
         </tbody>
-        <tfoot></tfoot>
+        <tfoot colspan="6"></tfoot>
       </table>
     </section>
   );
