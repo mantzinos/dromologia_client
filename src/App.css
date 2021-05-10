@@ -160,6 +160,7 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
+  width: 100%;
 }
 .mynavbar {
   width: 100%;
