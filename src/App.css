@@ -638,6 +638,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+th {
+  color: #caf0f8;
+}
 /* 
 @media only screen and (max-width: 1025px) {
   body {
