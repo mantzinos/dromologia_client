@@ -53,24 +53,29 @@ const Main = props => {
       );
       setDestinations(prev => myDestinations.data);
 
-      const dates = new Date().toLocaleDateString();
-      const simera = await axios.post(
-        `${process.env.REACT_APP_LOCAL}/itinerary/date/${user}`,
-        { dates }
-      );
-      const todayData = simera.data;
-      const activeDate = todayData.filter(a => !a.stop);
+      // const dates = new Date().toLocaleDateString();
+      // const simera = await axios.post(
+      //   `${process.env.REACT_APP_LOCAL}/itinerary/date/${user}`,
+      //   { dates }
+      // );
+      // const todayData = simera.data;
+      // const activeDate = todayData.filter(a => !a.stop);
 
-      setItineraries(prev => activeDate);
+      // setItineraries(prev => activeDate);
       if (itineraries !== []) {
         setDelay(prev => 1000);
       }
 
-      const allItineraries = await axios.get(
-        `${process.env.REACT_APP_LOCAL}/itinerary/getall/${user}`
-      );
+      // const allItineraries = await axios.get(
+      //   `${process.env.REACT_APP_LOCAL}/itinerary/getall/${user}`
+      // );
       // const noStopDates = allItineraries.data.filter(a => a.stop === undefined);
       // setItineraries(prev => [...prev, ...noStopDates]);
+      const myitineraries = await axios.get(
+        `${process.env.REACT_APP_LOCAL}/itinerary/getall/${user}`
+      );
+      console.log(myitineraries.data);
+      setItineraries(prev => myitineraries.data.filter(a => !a.stop));
     };
     letsCheckUser();
   }, []);
