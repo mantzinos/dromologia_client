@@ -636,14 +636,58 @@ body {
   display: flex;
   flex-direction: column;
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1025px) {
+  body {
+    font-size: 0.6em;
+  }
+  .title {
+    text-shadow: 1px 1px black;
+  }
+  .mylink {
+    padding: 5px 10px;
+    margin: 0 7.5px;
+    border: 1px solid rgb(231, 230, 195);
+    box-shadow: : 0px 4px 7.5px rgba(0, 0, 0, 0.1) ;
+  }
+  .mylink:hover{
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.7);
+  transform: translate(1px);
+  padding: 5px 10px;
+  border: 2px solid rgba(211, 192, 28, 1);
+  }
   .myform {
     width: 200px;
     height: 200px;
+    box-shadow: 0 2px 10px 5px rgba(3, 4, 94, 0.3);
+  }
+  .item {
+    text-shadow: 0px 8px 15px rgba(0, 119, 182, 0.3);
+  }
+  .loginbtn {
+    padding: 5px 20px;
+  border-radius: 10%/50%;
+  border: 1px solid #caf0f8;
+  box-shadow: 0px 4px 7.5px rgba(0, 119, 182, 0.3);
+  }
+  .loginbtn:hover {
+    border: 1px solid #00b4d8;
+    box-shadow: 0px 4px 7.5px rgba(0, 0, 0, 0.1);
+  }
+  .inputtext {
+    padding: 5px 0;
+    box-shadow: 0px 4px 7.5px rgba(0, 119, 182, 0.3);
+    border: 1px solid #caf0f8;
   }
   .myform2 {
     width: 200px;
     height: 250px;
+    box-shadow: 0 1px 5px 2.5px rgba(3, 4, 94, 0.3);
+  }
+  .mynavbar {
+    height: 30px;
+    background-color: #caf0f8;
+    color: #00b4d8;
+    box-shadow: 0 1px 5px 2.5px rgba(3, 4, 94, 0.3);
   }
   .navbuttons {
     width: 225px;
@@ -651,17 +695,29 @@ body {
   .navtitle {
     width: 75px;
     height: 25px;
+    text-shadow: 0px 4px 7.5px rgba(0, 119, 182, 0.3);
   }
   .addsection {
     height: 220px;
+    text-shadow: 0px 4px 7.5px rgba(0, 119, 182, 0.3)
   }
   .mymainform {
     width: 200px;
     height: 200px;
+    margin: 0 10px 0 10px;
+    flex-shrink: 0;
+    background-color: #caf0f8;
+    border-radius: 5%;
+    box-shadow: 0 1px 5px 2.5px rgba(3, 4, 94, 0.3);
   }
   .adddriver {
     width: 300px;
     height: 200px;
+    box-shadow: 0 1px 5px 2.5px rgba(3, 4, 94, 0.3);
+  }
+  .adddriverphoto {
+    box-shadow: 0 1px 5px 2.5px rgba(0, 119, 182, 0.3);
+    border: 1px solid #caf0f8;
   }
   .adddriverleft {
     width: 145px;
@@ -674,6 +730,8 @@ body {
   .addvehicle {
     width: 400px;
     height: 400px;
+    margin: 0 0 0 10px;
+    box-shadow: 0 1px 5px 2.5px rgba(3, 4, 94, 0.3);
   }
   .addvehicleall {
     height: 170px;
@@ -698,22 +756,58 @@ body {
   .adddestination {
     width: 200px;
     height: 200px;
+    margin: 0 10px 0 10px;
+    background-color: #caf0f8;
+    border-radius: 5%;
+    box-shadow: 0 1px 5px 2.5px rgba(3, 4, 94, 0.3);
   }
   .adddestinationall {
     height: 170px;
     width: 170px;
   }
   .adddestinationtitle {
+    margin-top: 5px;
     width: 170px;
     height: 15px;
   }
   .adddestinationcontent {
+    margin-top: 15px;
     width: 135px;
     height: 150px;
   }
   .destinationname {
     width: 135px;
     height: 20px;
+  }
+  .destintitle1 {
+    margin: 2.5px 0 2.5px 0;
+
+  }
+  .destincontent1 {
+    margin: 2.5px 0 2.5px 0;
+
+  }
+  .destintitle2 {
+    margin: 7.5px 0 0.5px 0;
+  }
+  .destincontent2 {
+    margin: 2.5px 0 2.5px 0;
+  }
+  .checkbtn {
+    padding: 5px 15px;
+    border: 1px solid #00b4d8;
+    transition: all 0.3s ease 0s;
+    box-shadow: 0px 4px 7.5px rgba(0, 0, 0, 0.2);
+  }
+  .checkbtn:hover {
+    border: 1px solid #caf0f8;
+    box-shadow: 0px 4px 7.5px rgba(0, 119, 182, 0.3);
+  }
+  .mycheckbtn {
+    margin: 10px 0 0 10px;
+  }
+  .itineraries {
+    margin-top: 10px;
   }
   .destinationdescription {
     width: 135px;
@@ -722,6 +816,10 @@ body {
   .itinerary {
     width: 200px;
     height: 250px;
+    margin: 10px 10px 10px 10px;
+  background-color: #caf0f8;
+  border-radius: 5%;
+  box-shadow: 0 1px 5px 2.5px rgba(3, 4, 94, 0.3);
   }
   .cardtitle {
     height: 15px;
@@ -737,14 +835,19 @@ body {
   .myform3 {
     width: 200px;
     height: 300px;
+    box-shadow: 0 1px 5px 2.5px rgba(3, 4, 94, 0.3);
   }
   .myform4 {
     width: 200px;
     height: 350px;
+    box-shadow: 0 1px 5px 2.5px rgba(3, 4, 94, 0.3);
+
   }
   .usersettings {
     width: 512px;
     height: 384px;
+    box-shadow: 0 1px 5px 2.5px rgba(3, 4, 94, 0.3);
+
   }
   .settingsinsideleft {
     width: 256px;
@@ -762,7 +865,27 @@ body {
     width: 256px;
     height: 32px;
   }
+  ::-webkit-file-upload-button {
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 10%/50%;
+    font-size: 0.9em;
+    background-color: #00b4d8;
+    color: #caf0f8;
+    border: 1px solid #caf0f8;
+    box-shadow: 0px 4px 7.5px rgba(0, 119, 182, 0.3);
+    transition: all 0.3s ease 0s;
+  }
+  ::-webkit-file-upload-button:hover {
+    background-color: #caf0f8;
+    color: #00b4d8;
+    border: 1px solid #00b4d8;
+    box-shadow: 0px 4px 7.5px rgba(0, 0, 0, 0.1);
+    background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+    cursor: pointer;
 }
+}
+
 /* 
 @media only screen and (max-width: 600px) {
   .mainsection {
