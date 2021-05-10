@@ -16,7 +16,6 @@ const Updateuser = props => {
         [name]: value,
       };
     });
-    console.log(name, value);
   };
 
   const handleSubmit = async event => {
@@ -30,7 +29,6 @@ const Updateuser = props => {
         `${process.env.REACT_APP_LOCAL}/update/`,
         myUser
       );
-      console.log(res.data);
 
       if (res.data === "User updated successfully") {
         setCheckAdd(prev => true);
@@ -38,7 +36,6 @@ const Updateuser = props => {
     } catch (err) {
       console.log(err);
     }
-    console.log(userr);
   };
   if (checkAdd) {
     return <Redirect to={settings} />;

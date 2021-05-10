@@ -15,7 +15,6 @@ const Deletedestination = props => {
       const res = await axios.get(
         `${process.env.REACT_APP_LOCAL}/destination/getall/${user}`
       );
-      console.log(res.data);
       setDestinations(res.data);
     };
     getdestinations();
@@ -24,7 +23,6 @@ const Deletedestination = props => {
   const handleChangedestination = event => {
     try {
       const { name, value } = event.target;
-      console.log("name: ", name, " value: ", value);
       setDestination(prev => {
         return {
           _id: value,
@@ -40,14 +38,10 @@ const Deletedestination = props => {
     try {
       const newDestination = destination;
 
-      console.log(newDestination, "***destination***");
-
-      console.log(newDestination);
       const res = await axios.delete(
         `${process.env.REACT_APP_LOCAL}/destination/delete/${user}`,
         { data: { _id: newDestination._id } }
       );
-      console.log(res.data);
       if ((res.data = "destination deleted successfully")) {
         setCheckAdd(prev => true);
       }

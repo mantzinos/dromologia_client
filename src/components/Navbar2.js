@@ -2,13 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar2 = props => {
+  console.log(props);
   const main = `/main/${props.user}`;
+  const history = `/history/${props.user}`;
+
   return (
     <div className="mynavbar">
       <div className="navtitle">Δρομολόγια</div>
       <div className="navbuttons">
         <div className="navbtnmain">
-          <Link className="loginbtn" to="/history">
+          <Link className="loginbtn" to={history}>
             Ιστορικό
           </Link>
         </div>

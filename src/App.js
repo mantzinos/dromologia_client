@@ -19,6 +19,7 @@ import Updatevehicle from "./components/Updatevehicle";
 import Deletevehicle from "./components/Deletevehicle";
 import Updateuser from "./components/Updateuser";
 import Deleteuser from "./components/Deleteuser";
+import History from "./components/History";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           <Route exact path="/deletevehicle/:name" component={Deletevehicle} />
           <Route exact path="/updateuser/:name" component={Updateuser} />
           <Route exact path="/deleteuser/:name" component={Deleteuser} />
+          <Route exact path="/history/:name" component={History} />
         </Switch>
       </div>
     </Router>

@@ -14,7 +14,6 @@ const Updatedestination = props => {
       const res = await axios.get(
         `${process.env.REACT_APP_LOCAL}/destination/getall/${user}`
       );
-      console.log(res.data);
       setDestinations(res.data);
     };
     getDestinations();
@@ -33,7 +32,6 @@ const Updatedestination = props => {
   const handleChangeDestination = event => {
     const { name, value } = event.target;
     setdestination(prev => {
-      console.log(value);
       return {
         ...prev,
         _id: value,
@@ -44,7 +42,6 @@ const Updatedestination = props => {
     event.preventDefault();
     try {
       const newDestination = destination;
-      console.log(newDestination);
       const res = await axios.put(
         `${process.env.REACT_APP_LOCAL}/destination/update/${user}`,
         newDestination
@@ -55,7 +52,6 @@ const Updatedestination = props => {
     } catch (err) {
       console.log(err);
     }
-    console.log(destination);
   };
   if (checkAdd) {
     return <Redirect to={settings} />;

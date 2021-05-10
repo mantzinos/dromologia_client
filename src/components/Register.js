@@ -15,7 +15,6 @@ const Register = () => {
         [name]: value,
       };
     });
-    console.log(myInput);
   };
   const handleSubmit = async event => {
     event.preventDefault();
@@ -25,7 +24,6 @@ const Register = () => {
         `${process.env.REACT_APP_LOCAL}/register`,
         myInput
       );
-      console.log(res.data);
       setMySubmit(prev => res.data);
     } catch (err) {
       console.log(err);

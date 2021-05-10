@@ -21,7 +21,6 @@ const Deleteuser = props => {
   const handleSubmit = async event => {
     event.preventDefault();
     try {
-      console.log(userr.password);
       const res = await axios.delete(
         `${process.env.REACT_APP_LOCAL}/delete/${user}`,
         { data: { password: userr.password } }
@@ -29,7 +28,6 @@ const Deleteuser = props => {
       if (res.data === "ok") {
         setCheckDelete(prev => true);
       }
-      console.log(userr);
     } catch (err) {
       console.log(err);
     }

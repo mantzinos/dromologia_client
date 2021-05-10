@@ -15,21 +15,11 @@ const Deletedriver = props => {
       const res = await axios.get(
         `${process.env.REACT_APP_LOCAL}/driver/getall/${user}`
       );
-      console.log(res.data);
       setDrivers(res.data);
     };
     getDrivers();
   }, []);
 
-  //   const handleChange = event => {
-  //     const { name, value } = event.target;
-  //     setDriver(prev => {
-  //       return {
-  //         ...prev,
-  //         [name]: value,
-  //       };
-  //     });
-  //   };
   const handleChangeDriver = event => {
     try {
       const { name, value } = event.target;
@@ -39,7 +29,6 @@ const Deletedriver = props => {
           _id: value,
         };
       });
-      console.log(value);
     } catch (err) {
       console.log(err);
     }

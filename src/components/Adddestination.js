@@ -21,7 +21,6 @@ const Adddestination = props => {
     event.preventDefault();
     try {
       const newDestination = destination;
-      console.log(newDestination);
       const res = await axios.post(
         `${process.env.REACT_APP_LOCAL}/destination/add/${user}`,
         newDestination
@@ -32,7 +31,6 @@ const Adddestination = props => {
     } catch (err) {
       console.log(err);
     }
-    console.log(destination);
   };
   if (checkAdd) {
     return <Redirect to={settings} />;

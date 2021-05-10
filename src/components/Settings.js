@@ -9,7 +9,6 @@ const Settings = props => {
   useEffect(() => {
     const user1 = props.match.params.name;
     setUser(prev => user1);
-    console.log(user, "*****");
   }, []);
 
   const addDriver = `/adddriver/${user}`;
@@ -40,10 +39,7 @@ const Settings = props => {
                   Προχώρησε
                 </Link>
               </div>
-              {/* <div className="settingscontent">
-                <div className="leftone">Αλλαγή email</div>
-                <button className="loginbtn">Προχώρησε</button>
-              </div> */}
+
               <div className="settingscontent">
                 Διαγραφή χρήστη{" "}
                 <Link to={deleteUser} className="loginbtn">

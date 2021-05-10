@@ -54,7 +54,6 @@ const Main = props => {
       setDestinations(prev => myDestinations.data);
 
       const dates = new Date().toLocaleDateString();
-      console.log(dates);
       const simera = await axios.post(
         `${process.env.REACT_APP_LOCAL}/itinerary/date/${user}`,
         { dates }
@@ -66,6 +65,12 @@ const Main = props => {
       if (itineraries !== []) {
         setDelay(prev => 1000);
       }
+
+      const allItineraries = await axios.get(
+        `${process.env.REACT_APP_LOCAL}/itinerary/getall/${user}`
+      );
+      const noStopDates = allItineraries.data.filter(a => a.stop === undefined);
+      setItineraries(prev => [...prev, ...noStopDates]);
     };
     letsCheckUser();
   }, []);
@@ -117,7 +122,6 @@ const Main = props => {
   const handleChangeItinerary = async event => {
     event.preventDefault();
     try {
-      console.log(myItinerary);
       const res = await axios.post(
         `${process.env.REACT_APP_LOCAL}/itinerary/add/${checkUser}`,
         myItinerary
@@ -131,8 +135,6 @@ const Main = props => {
   };
   const checkAddBtn = event => {
     setCheckAdd(prev => true);
-
-    console.log(vehicles);
   };
   const checkReturn = event => {
     event.preventDefault();
@@ -140,11 +142,8 @@ const Main = props => {
   };
 
   const stopTimer = async event => {
-    console.log(event.target);
     const timeNow = new Date().toISOString();
     const { name, value } = event.target;
-    console.log(name);
-    console.log(timeNow);
     const res = await axios.put(
       `${process.env.REACT_APP_LOCAL}/itinerary/update/${checkUser}`,
       {
@@ -239,7 +238,7 @@ const Main = props => {
                   onClick={handleChangeItinerary}
                   className="loginbtn"
                 >
-                  Εισαγωγή
+                  Εκκίνηση
                 </button>
                 <span className="myspan"></span>
                 <button

@@ -35,7 +35,6 @@ const Updatevehicle = props => {
   };
   const handleChangeVehicle = event => {
     const { name, value } = event.target;
-    console.log(value);
     setVehicle(prev => {
       return {
         ...prev,
@@ -47,7 +46,6 @@ const Updatevehicle = props => {
     event.preventDefault();
     try {
       const newVehicle = vehicle;
-      console.log(newVehicle);
       const res = await axios.put(
         `${process.env.REACT_APP_LOCAL}/vehicle/update/${user}`,
         newVehicle
@@ -59,7 +57,6 @@ const Updatevehicle = props => {
     } catch (err) {
       console.log(err);
     }
-    console.log(vehicle);
   };
   if (checkAdd) {
     return <Redirect to={settings} />;

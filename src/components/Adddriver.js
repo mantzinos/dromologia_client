@@ -22,7 +22,6 @@ const Adddriver = props => {
       formData.append("file", file);
       formData.append("upload_preset", "drivers");
       const pic = await axios.post(`${process.env.REACT_APP_PHOTO}`, formData);
-      console.log(pic.data.url);
       setPhoto(prev => pic.data.url);
     } catch (err) {
       console.log(err);
@@ -38,7 +37,6 @@ const Adddriver = props => {
         photo,
       };
     });
-    console.log("name: ", name, " value: ", value, "file: ", file);
   };
   const handleSubmit = async event => {
     event.preventDefault();
@@ -50,7 +48,6 @@ const Adddriver = props => {
       console.log(pic.data.url);
       const newDriver = driver;
       newDriver.photo = pic.data.url;
-      console.log(newDriver);
       const res = await axios.post(
         `${process.env.REACT_APP_LOCAL}/driver/add/${user}`,
         newDriver
@@ -61,7 +58,6 @@ const Adddriver = props => {
     } catch (err) {
       console.log(err);
     }
-    console.log(driver);
   };
   if (checkAdd) {
     return <Redirect to={settings} />;

@@ -18,7 +18,6 @@ const Updatedriver = props => {
       const res = await axios.get(
         `${process.env.REACT_APP_LOCAL}/driver/getall/${user}`
       );
-      console.log(res.data);
       setDrivers(res.data);
     };
     getDrivers();
@@ -34,7 +33,6 @@ const Updatedriver = props => {
       formData.append("file", file);
       formData.append("upload_preset", "drivers");
       const pic = await axios.post(`${process.env.REACT_APP_PHOTO}`, formData);
-      console.log(pic.data.url);
       setPhoto(prev => pic.data.url);
     } catch (err) {
       console.log(err);
@@ -50,19 +48,16 @@ const Updatedriver = props => {
         photo,
       };
     });
-    // console.log("name: ", name, " value: ", value, "file: ", file);
   };
   const handleChangeDriver = event => {
     try {
       const { name, value } = event.target;
-      console.log("name: ", name, " value: ", value);
       setDriver(prev => {
         return {
           ...prev,
           _id: value,
         };
       });
-      console.log(value);
     } catch (err) {
       console.log(err);
     }

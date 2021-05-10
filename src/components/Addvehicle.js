@@ -21,7 +21,6 @@ const Addvehicle = props => {
     event.preventDefault();
     try {
       const newVehicle = vehicle;
-      console.log(newVehicle);
       const res = await axios.post(
         `${process.env.REACT_APP_LOCAL}/vehicle/add/${user}`,
         newVehicle
@@ -32,7 +31,6 @@ const Addvehicle = props => {
     } catch (err) {
       console.log(err);
     }
-    console.log(vehicle);
   };
   if (checkAdd) {
     return <Redirect to={settings} />;
