@@ -69,8 +69,8 @@ const Main = props => {
       const allItineraries = await axios.get(
         `${process.env.REACT_APP_LOCAL}/itinerary/getall/${user}`
       );
-      const noStopDates = allItineraries.data.filter(a => a.stop === undefined);
-      setItineraries(prev => [...prev, ...noStopDates]);
+      // const noStopDates = allItineraries.data.filter(a => a.stop === undefined);
+      // setItineraries(prev => [...prev, ...noStopDates]);
     };
     letsCheckUser();
   }, []);
