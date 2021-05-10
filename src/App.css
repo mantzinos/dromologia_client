@@ -173,8 +173,8 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
-  position: relative;
 }
+
 .navbuttons {
   display: flex;
   width: 450px;
@@ -885,7 +885,6 @@ body {
   }
 } */
 
-/* 
 @media only screen and (max-width: 600px) {
   .mainsection {
     display: flex;
@@ -922,4 +921,4 @@ td {
   background-image: url("https://www.transparenttextures.com/patterns/paper.png");
   text-align: center;
   border: 2px solid #00b4d8;
-} */
+}
