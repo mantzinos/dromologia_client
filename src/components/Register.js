@@ -20,10 +20,7 @@ const Register = () => {
     event.preventDefault();
 
     try {
-      const res = await axios.post(
-        `${process.env.REACT_APP_LOCAL}/register`,
-        myInput
-      );
+      const res = await axios.post(`${REACT_APP_LOCAL}/register`, myInput);
       setMySubmit(prev => res.data);
     } catch (err) {
       console.log(err);

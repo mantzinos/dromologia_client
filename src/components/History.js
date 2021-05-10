@@ -25,7 +25,7 @@ const History = props => {
     const getItineraries = async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_LOCAL}/itinerary/getall/${user1}`
+          `${REACT_APP_LOCAL}/itinerary/getall/${user1}`
         );
         setItineraries(res.data.filter(a => a.stop));
       } catch (err) {

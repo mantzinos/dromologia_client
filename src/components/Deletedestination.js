@@ -13,7 +13,7 @@ const Deletedestination = props => {
   useEffect(() => {
     const getdestinations = async () => {
       const res = await axios.get(
-        `${process.env.REACT_APP_LOCAL}/destination/getall/${user}`
+        `${REACT_APP_LOCAL}/destination/getall/${user}`
       );
       setDestinations(res.data);
     };
@@ -39,7 +39,7 @@ const Deletedestination = props => {
       const newDestination = destination;
 
       const res = await axios.delete(
-        `${process.env.REACT_APP_LOCAL}/destination/delete/${user}`,
+        `${REACT_APP_LOCAL}/destination/delete/${user}`,
         { data: { _id: newDestination._id } }
       );
       if ((res.data = "destination deleted successfully")) {

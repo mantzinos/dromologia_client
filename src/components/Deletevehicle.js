@@ -12,9 +12,7 @@ const Deletevehicle = props => {
 
   useEffect(() => {
     const getVehicles = async () => {
-      const res = await axios.get(
-        `${process.env.REACT_APP_LOCAL}/vehicle/getall/${user}`
-      );
+      const res = await axios.get(`${REACT_APP_LOCAL}/vehicle/getall/${user}`);
       console.log(res.data);
       setVehicles(res.data);
     };

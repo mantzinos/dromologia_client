@@ -40,22 +40,22 @@ const Main = props => {
       const user = props.match.params.name;
       setCheckUser(prev => user);
       const myDrivers = await axios.get(
-        `${process.env.REACT_APP_LOCAL}/driver/getall/${user}`
+        `${REACT_APP_LOCAL}/driver/getall/${user}`
       );
       setDrivers(prev => myDrivers.data);
 
       const myVehicles = await axios.get(
-        `${process.env.REACT_APP_LOCAL}/vehicle/getall/${user}`
+        `${REACT_APP_LOCAL}/vehicle/getall/${user}`
       );
       setVehicles(prev => myVehicles.data);
       const myDestinations = await axios.get(
-        `${process.env.REACT_APP_LOCAL}/destination/getall/${user}`
+        `${REACT_APP_LOCAL}/destination/getall/${user}`
       );
       setDestinations(prev => myDestinations.data);
 
       const dates = new Date().toLocaleDateString();
       const simera = await axios.post(
-        `${process.env.REACT_APP_LOCAL}/itinerary/date/${user}`,
+        `${REACT_APP_LOCAL}/itinerary/date/${user}`,
         { dates }
       );
       const todayData = simera.data;
@@ -67,7 +67,7 @@ const Main = props => {
       }
 
       const allItineraries = await axios.get(
-        `${process.env.REACT_APP_LOCAL}/itinerary/getall/${user}`
+        `${REACT_APP_LOCAL}/itinerary/getall/${user}`
       );
       const noStopDates = allItineraries.data.filter(a => a.stop === undefined);
       setItineraries(prev => [...prev, ...noStopDates]);
@@ -123,7 +123,7 @@ const Main = props => {
     event.preventDefault();
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_LOCAL}/itinerary/add/${checkUser}`,
+        `${REACT_APP_LOCAL}/itinerary/add/${checkUser}`,
         myItinerary
       );
       setItineraries(prev => [...prev, res.data]);
@@ -145,7 +145,7 @@ const Main = props => {
     const timeNow = new Date().toISOString();
     const { name, value } = event.target;
     const res = await axios.put(
-      `${process.env.REACT_APP_LOCAL}/itinerary/update/${checkUser}`,
+      `${REACT_APP_LOCAL}/itinerary/update/${checkUser}`,
       {
         _id: name,
         stop: timeNow,

@@ -25,10 +25,7 @@ const Updateuser = props => {
       myUser.username = user;
       console.log(myUser);
       const { email, password } = userr;
-      const res = await axios.put(
-        `${process.env.REACT_APP_LOCAL}/update/`,
-        myUser
-      );
+      const res = await axios.put(`${REACT_APP_LOCAL}/update/`, myUser);
 
       if (res.data === "User updated successfully") {
         setCheckAdd(prev => true);
