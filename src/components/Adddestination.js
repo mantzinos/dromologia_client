@@ -22,7 +22,7 @@ const Adddestination = props => {
     try {
       const newDestination = destination;
       const res = await axios.post(
-        `${REACT_APP_LOCAL}/destination/add/${user}`,
+        `${process.env.REACT_APP_LOCAL}/destination/add/${user}`,
         newDestination
       );
       if (res.data) {

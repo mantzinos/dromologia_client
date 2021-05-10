@@ -8,8 +8,8 @@ const Adddriver = props => {
   const [file, setFile] = useState("");
   const [photo, setPhoto] = useState("");
   const [driver, setDriver] = useState({});
-  console.log(REACT_APP_PHOTO);
-  console.log(REACT_APP_LOCAL);
+  console.log(process.env.REACT_APP_PHOTO);
+  console.log(process.env.REACT_APP_LOCAL);
   const [checkAdd, setCheckAdd] = useState(false);
 
   const fileHandler = event => {
@@ -21,7 +21,7 @@ const Adddriver = props => {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", "drivers");
-      const pic = await axios.post(`${REACT_APP_PHOTO}`, formData);
+      const pic = await axios.post(`${process.env.REACT_APP_PHOTO}`, formData);
       setPhoto(prev => pic.data.url);
     } catch (err) {
       console.log(err);
@@ -44,12 +44,12 @@ const Adddriver = props => {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", "drivers");
-      const pic = await axios.post(`${REACT_APP_PHOTO}`, formData);
+      const pic = await axios.post(`${process.env.REACT_APP_PHOTO}`, formData);
       console.log(pic.data.url);
       const newDriver = driver;
       newDriver.photo = pic.data.url;
       const res = await axios.post(
-        `${REACT_APP_LOCAL}/driver/add/${user}`,
+        `${process.env.REACT_APP_LOCAL}/driver/add/${user}`,
         newDriver
       );
       if (res.data) {

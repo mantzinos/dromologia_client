@@ -19,7 +19,10 @@ const Login = () => {
   const handleSubmit = async event => {
     event.preventDefault();
     try {
-      const res = await axios.post(`${REACT_APP_LOCAL}/login`, myInput);
+      const res = await axios.post(
+        `${process.env.REACT_APP_LOCAL}/login`,
+        myInput
+      );
       setMySubmit(prev => res.data);
       event.preventDefault();
     } catch (err) {

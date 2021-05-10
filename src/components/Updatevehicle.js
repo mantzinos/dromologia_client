@@ -13,7 +13,7 @@ const Updatevehicle = props => {
     const getVehicles = async () => {
       try {
         const res = await axios.get(
-          `${REACT_APP_LOCAL}/vehicle/getall/${user}`
+          `${process.env.REACT_APP_LOCAL}/vehicle/getall/${user}`
         );
         console.log(res.data);
         setVehicles(res.data);
@@ -47,7 +47,7 @@ const Updatevehicle = props => {
     try {
       const newVehicle = vehicle;
       const res = await axios.put(
-        `${REACT_APP_LOCAL}/vehicle/update/${user}`,
+        `${process.env.REACT_APP_LOCAL}/vehicle/update/${user}`,
         newVehicle
       );
 

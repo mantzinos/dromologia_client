@@ -12,7 +12,9 @@ const Deletedriver = props => {
 
   useEffect(() => {
     const getDrivers = async () => {
-      const res = await axios.get(`${REACT_APP_LOCAL}/driver/getall/${user}`);
+      const res = await axios.get(
+        `${process.env.REACT_APP_LOCAL}/driver/getall/${user}`
+      );
       setDrivers(res.data);
     };
     getDrivers();
@@ -40,7 +42,7 @@ const Deletedriver = props => {
 
       console.log(newDriver);
       const res = await axios.delete(
-        `${REACT_APP_LOCAL}/driver/delete/${user}`,
+        `${process.env.REACT_APP_LOCAL}/driver/delete/${user}`,
         { data: { _id: newDriver._id } }
       );
       console.log(res.data);

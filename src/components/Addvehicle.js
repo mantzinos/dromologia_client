@@ -22,7 +22,7 @@ const Addvehicle = props => {
     try {
       const newVehicle = vehicle;
       const res = await axios.post(
-        `${REACT_APP_LOCAL}/vehicle/add/${user}`,
+        `${process.env.REACT_APP_LOCAL}/vehicle/add/${user}`,
         newVehicle
       );
       if (res.data) {

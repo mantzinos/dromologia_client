@@ -12,7 +12,7 @@ const Updatedestination = props => {
   useEffect(() => {
     const getDestinations = async () => {
       const res = await axios.get(
-        `${REACT_APP_LOCAL}/destination/getall/${user}`
+        `${process.env.REACT_APP_LOCAL}/destination/getall/${user}`
       );
       setDestinations(res.data);
     };
@@ -43,7 +43,7 @@ const Updatedestination = props => {
     try {
       const newDestination = destination;
       const res = await axios.put(
-        `${REACT_APP_LOCAL}/destination/update/${user}`,
+        `${process.env.REACT_APP_LOCAL}/destination/update/${user}`,
         newDestination
       );
       if (res.data) {
